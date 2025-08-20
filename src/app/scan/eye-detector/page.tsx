@@ -107,14 +107,15 @@ const analyzeFrame = async () => {
   setLoading(true);
   try {
     const res = await axios.post(
-      "http://localhost:8000/eye/predict-eye",
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
+  `${process.env.NEXT_PUBLIC_API_URL}/eye/predict-eye`,
+  formData,
+  {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  }
+);
+
     console.log(res)
     setResult(res.data);
   } catch (err) {
